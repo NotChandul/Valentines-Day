@@ -136,4 +136,28 @@ display: inline-block;
     padding: 10px 20px;
     background-color: rgba(255,240,240,0.5);
     border-radius: 12px;
+
+}
+
+/* Gallery Styles */
+#gallery-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#gallery-img {
+    max-width: 90%;
+    max-height: 300px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    object-fit: contain;
+}
+
+/* Helper class to remove padding when gallery is open */
+.letter-window.gallery-mode {
+    padding-top: 0 !important; /* Overrides the original 180px padding */
+    justify-content: center;
 }
