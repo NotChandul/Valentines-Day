@@ -70,3 +70,48 @@ yesBtn.addEventListener("click", () => {
 
     finalText.style.display = "block";
 });
+
+// 2. Photo Gallery Logic
+const galleryContainer = document.getElementById("gallery-container");
+const galleryImg = document.getElementById("gallery-img");
+const letterWindow = document.querySelector(".letter-window");
+
+// REPLACE THESE with your actual file names!
+const photos = [
+    "20250612_112654.jpg", 
+    "20250903_112746.jpg", 
+    "20250903_143846.jpg",
+    "20250908_115244.jpg",
+    "20251008_155413.jpg",
+    "IMG_20250826_151648_450.jpg",
+    "Snapchat-586143590.jpg"
+];
+
+let photoIndex = 0;
+let isGalleryOpen = false;
+
+letterWindow.addEventListener("click", () => {
+    // Only run if the "Yes" button has been clicked already
+    if (!letterWindow.classList.contains("final")) return;
+
+    if (!isGalleryOpen) {
+        // First click: Open the gallery
+        isGalleryOpen = true;
+        
+        // Hide the text/cat elements
+        title.style.display = "none";
+        catImg.style.display = "none";
+        finalText.style.display = "none";
+        
+        // Adjust window layout
+        letterWindow.classList.add("gallery-mode");
+        
+        // Show gallery
+        galleryContainer.style.display = "flex";
+        galleryImg.src = photos[photoIndex];
+    } else {
+        // Subsequent clicks: Cycle through photos
+        photoIndex = (photoIndex + 1) % photos.length;
+        galleryImg.src = photos[photoIndex];
+    }
+});
